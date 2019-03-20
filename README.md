@@ -6,8 +6,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
-|mail|string|null: false|
+|name|string|null: false, unique: true|
+|mail|string|null: false, unique: true|
+
+- add_index :users
 
 ### Association
 - has_many :messages
