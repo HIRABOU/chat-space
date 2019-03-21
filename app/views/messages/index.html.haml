@@ -1,18 +1,14 @@
 !!!
 %html
   %head
-    %meta{content: "text/html; charset=UTF-8"}
-    %title ChatSpaceProto
-    %meta{name: "csrf-param", content: "authenticity_token"}
   %body
-    .flash-box
     .wrapper
       .chat-side
         .side-header
-          .side-header__box
-            %p.side-header__box__user-name test-user
-            %ul.side-header__box__menu
-              %li.side-header__box__menu__edit-user
-              %li.side-header__box__menu__new-group
-        .groups
+          .side-header__box test-user
+        .groups test-group
+      .chat-main
+        .group-info test-group
+        .chat-comment test-comment
+        .form test form
 
