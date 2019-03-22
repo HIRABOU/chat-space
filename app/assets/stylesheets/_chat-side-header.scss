@@ -1,6 +1,7 @@
 .chat-side {
   width: 300px;
   float: left;
+  color: $white;
 
   .side-header {
     background-color: #253141;
@@ -10,16 +11,19 @@
     justify-content: space-between;
     padding: 0 20px;
 
-    &__icons {
-      display: flex;
-      color: $white;
+    &__box {
+
+      &__name {
+        font-size:16px;
+        font-weight: bold;
+      }
     }
 
-    &__box {
-      font-size:16px;
-      font-weight: bold;
-      color: $white;
+    &__icons {
+        display: flex;
+
+      .list {
+      }
     }
   }
-
 }
