@@ -1,0 +1,39 @@
+.chat-main {
+  width: calc(100vw - 300px);
+  height: 100vh;
+  float: left;
+  position: relative;
+  background-color: #fafafa;
+
+  .main-header {
+    height: 100px;
+    border-bottom: 1px solid #eeeeee;
+    display: flex;
+    justify-content: space-between;
+
+    &__box {
+      padding: 35px 40px 0;
+
+      &__name {
+        font-size: 20px;
+        color: #333333;
+      }
+
+      &__member {
+        font-size: 12px;
+        color: $gray;
+        padding-top: 15px;
+      }
+    }
+
+    &__edit-btn {
+      color: $blue;
+      height: 40px;
+      line-height: 40px;
+      border: 1px solid #eeeeee;
+      padding: 0 20px;
+      margin: 28px 40px 0 0;
+    }
+  }
+
+}
