@@ -1,36 +1,32 @@
-!!!
-%html
-  %head
-  %body
-    .wrapper
-      .chat-side
-        .side-header
-          .side-header__box test-user
-          %ul.side-header__icons
-            %li
-              %i.fa.fa-pencil-square-o
-            %li
-              %i.fa.fa-gear
-        .groups
-          .groups__box test-group
-          .groups__message sample-message
+.wrapper
+  .chat-side
+    .side-header
+      .side-header__box test-user
+      %ul.side-header__icons
+        %li
+          %i.fa.fa-pencil-square-o
+        %li
+          %i.fa.fa-gear
+    .groups
+      .groups__box test-group
+      .groups__message sample-message
 
-      .chat-main
-        .main-header
-          .main-header__box
-            .main-header__box__name test-group
-            .main-header__box__member Member : test-user
-          .main-header__edit-btn Edit
-        .main-body
-          .main-body__box
-            .main-body__box__message
-              .main-body__box__message__user-name test-user
-              .main-body__box__message__comment test-comment
-            .main-body__box__date 2019/02/13(wed) 17:50:42
-        %form
-          .input-box
-            %input.input-box__text.fa-stack{type: "text", placeholder: "type a message"}
-            %ul.input-box__image-icon
-              %i.fa.fa-stack-1x.fa-picture-o
-          .send-btn Send
+  .chat-main
+    .main-header
+      .main-header__box
+        .main-header__box__name test-group
+        .main-header__box__member Member : test-user
+      .main-header__edit-btn Edit
+    .main-body
+      .main-body__box
+        .main-body__box__message
+          .main-body__box__message__user-name test-user
+          .main-body__box__message__comment test-comment
+        .main-body__box__date 2019/02/13(wed) 17:50:42
+    %form
+      .input-box
+        %input.input-box__text.fa-stack{type: "text", placeholder: "type a message"}
+        %ul.input-box__image-icon
+          %i.fa.fa-stack-1x.fa-picture-o
+      .send-btn Send
 
