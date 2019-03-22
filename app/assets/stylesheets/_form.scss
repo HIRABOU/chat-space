@@ -1,0 +1,46 @@
+form {
+  height: 90px;
+  background-color: #ddd;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .input-box {
+    display: flex;
+    background-color: $white;
+    margin-left: 40px;
+
+    &__text {
+      height: 50px;
+      line-height: 50px;
+      width: calc(100vw - 500px);
+      padding-left: 10px;
+      border: none;
+
+    }
+
+    &__image-icon {
+      display: inline-block;
+      cursor: pointer;
+      font-size: 1.3rem;
+      width: 30px;
+      position: relative;
+
+        .fa-picture-o {
+          line-height: 50px;
+        }
+    }
+  }
+
+  .send-btn {
+    background-color: $blue;
+    color: $white;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 20px;
+    margin: 0 40px 0 15px;
+  }
+}
