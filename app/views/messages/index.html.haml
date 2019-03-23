@@ -1,12 +1,15 @@
 .wrapper
   .chat-side
     .side-header
-      .side-header__box test-user
+      .side-header__box
+        %h1.side-header__box__name
+          = current_user.name
       %ul.side-header__icons
-        %li
+        %li.list
           %i.fa.fa-pencil-square-o
-        %li
-          %i.fa.fa-gear
+        %li.list
+          = link_to edit_user_path(current_user) do
+            %i.fa.fa-gear
     .groups
       .groups__box test-group
       .groups__message sample-message
