@@ -1,32 +1,22 @@
 .wrapper
-  .chat-side
-    .side-header
-      .side-header__box
-        %h1.side-header__box__name
-          = current_user.name
-      %ul.side-header__icons
-        %li.list
-          %i.fa.fa-pencil-square-o
-        %li.list
-          = link_to edit_user_path(current_user) do
-            %i.fa.fa-gear
-    .groups
-      .groups__box test-group
-      .groups__message sample-message
+
+  = render 'shared/side_bar'
 
   .chat-main
     .main-header
       .main-header__box
         .main-header__box__name test-group
         .main-header__box__member Member : test-user
-      .main-header__edit-btn Edit
+      .main-header__edit-btn
+        = link_to edit_group_path(current_user) do
+          Edit
     .main-body
       .main-body__box
         .main-body__box__message
           .main-body__box__message__user-name test-user
           .main-body__box__message__comment test-comment
         .main-body__box__date 2019/02/13(wed) 17:50:42
-    %form
+    %form.form-box
       .input-box
         %input.input-box__text.fa-stack{type: "text", placeholder: "type a message"}
         %ul.input-box__image-icon
