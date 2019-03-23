@@ -6,7 +6,8 @@
           = current_user.name
       %ul.side-header__icons
         %li.list
-          %i.fa.fa-pencil-square-o
+          = link_to new_group_path do
+            %i.fa.fa-pencil-square-o
         %li.list
           = link_to edit_user_path(current_user) do
             %i.fa.fa-gear
