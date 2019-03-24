@@ -1,0 +1,11 @@
+.main-body__box
+  .main-body__box__message
+    .main-body__box__message__user-name
+      = message.user.name
+    .main-body__box__message__comment
+      - if message.message.present?
+        %p.main-body__box__message__comment__content
+          = message.message
+      = image_tag message.image.url, class: 'main-body__box__message__comment__image' if message.image.present?
+  .main-body__box__date
+    = message.created_at.strftime("%Y/%m/%d %H:%M")

@@ -11,11 +11,8 @@
         = link_to edit_group_path(current_user), class: "edit_btn" do
           Edit
     .main-body
-      .main-body__box
-        .main-body__box__message
-          .main-body__box__message__user-name test-user
-          .main-body__box__message__comment test-comment
-        .main-body__box__date 2019/02/13(wed) 17:50:42
+      = render partial: 'shared/message', collection: @messages
+
     .form.form-box
       = form_for [@group, @message] do |f|
         .input-box
