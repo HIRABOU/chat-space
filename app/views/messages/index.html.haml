@@ -5,8 +5,13 @@
   .chat-main
     .main-header
       .main-header__box
-        .main-header__box__name test-group
-        .main-header__box__member Member : test-user
+        .main-header__box__name
+          = @group.name
+        .main-header__box__member
+          Member：
+          - @group.users.each do |user|
+            .main-header__box__member__name
+              = user.name
       .main-header__edit-btn
         = link_to edit_group_path(current_user), class: "edit_btn" do
           Edit
