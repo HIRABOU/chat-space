@@ -26,13 +26,18 @@
       }
     }
 
-    &__edit-btn {
+    &__edit-btn{
       color: $blue;
       height: 40px;
       line-height: 40px;
-      border: 1px solid #eeeeee;
+      border: 1px solid $blue;
       padding: 0 20px;
       margin: 28px 40px 0 0;
+
+      .edit_btn {
+        text-decoration: none;
+        color: inherit;
+      }
     }
   }
 
