@@ -1,6 +1,7 @@
 .main-body {
-  height: calc(100vh - 100px);
+  height: calc(100vh - 190px);
   padding: 0 40px;
+  overflow: scroll;
 
   &__box {
     display: flex;
