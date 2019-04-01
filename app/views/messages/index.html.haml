@@ -19,9 +19,9 @@
       = render partial: 'shared/message', collection: @messages
 
     .form.form-box
-      = form_for [@group, @message] do |f|
+      = form_for [@group, @message], id: "new_message" do |f|
         .input-box
-          = f.text_field :message, class: 'input-box__text', placeholder: 'type a message'
+          = f.text_field :message, class: 'input-box__text', id: 'input-box__text', placeholder: 'type a message'
           .input-box__image-icon
             = f.label :image, class: "label" do
               %i.fa.fa-stack-1x.fa-picture-o
