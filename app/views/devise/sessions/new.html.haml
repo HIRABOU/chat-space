@@ -14,7 +14,8 @@
           .field
             .field-label
               = f.label :password
-              %i (英数字8文字以上)
+              %i
+                = ("英数字#{@minimum_password_length文字以上}")
             .field-input
               = f.password_field :password, autocomplete: "off"
           .actions
