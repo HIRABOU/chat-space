@@ -1,15 +1,30 @@
 $(function() {
   function buildHTML(message) {
+    var image_html_part = ``;
+    var text_html_part = ``;
+    if (typeof(message.image) != "undefined") {
+      image_html_part = `<div class="main-body__box__message__comment">
+<img class="main-body__box__message__comment__image" src="${message.image}" alt="${message.alt}">
+</div>`;
+    }
+    if (typeof(message.text) != "undefined") {
+      text_html_part = `<p class="main-body__box__message__comment__content">
+                      ${ message.text }
+                    </p>`;
+    }
+
+
+
     var html = `<div class="main-body__box">
                   <div class="main-body__box__message">
                     <div class="main-body__box__message__user-name">
                       ${ message.user_name }
                     </div>
                   <div class="main-body__box__message__comment">
-                    <p class="main-body__box__message__comment__content">
-                      ${ message.text }
-                    </p>
-                  </div>
+                    ` +
+                  text_html_part +
+                  image_html_part +
+                  `</div>
                 </div>
                   <div class="main-body__box__date">
                       ${ message.time }
@@ -33,12 +48,15 @@ $(function() {
     .done(function(data) {
       var html = buildHTML(data);
       $('.main-body').append(html);
-      $('.main-body').val('');
-      $('#input-box__text').val('');
+      // $('.main-body').val('');
+      // $('#input-box__text').val('');
+      $('#new_message').get(0).reset();
       $('.send-btn').prop('disabled', false);
+      $('.main-body').animate({scrollTop: $('.main-body')[0].scrollHeight}, 1000);
     })
     .fail(function() {
       alert('error');
     })
   });
+  $('.main-body').scrollTop($('.main-body')[0].scrollHeight);
 });
