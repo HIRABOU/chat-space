@@ -1,5 +1,5 @@
 .main-body {
-  height: calc(100vh - 240px);
+  height: calc(100vh - 190px);
   padding: 0 40px;
   overflow: scroll;
 
@@ -12,19 +12,20 @@
       &__user-name {
         font-size: 16px;
         color: $black;
-        padding: 46px 0 10px;
+        padding: 20px 0 10px;
       }
 
       &__comment {
         font-size: 14px;
         color: $black;
+        padding-bottom: 30px;
       }
     }
 
     &__date {
       font-size: 12px;
       color: $gray;
-      padding-top: 46px;
+      padding-top: 20px;
     }
   }
 }
