@@ -2,12 +2,12 @@ $(function() {
   function buildHTML(message) {
     var image_html_part = ``;
     var text_html_part = ``;
-    if (typeof(message.image) != "undefined") {
+    if (message.image != undefined) {
       image_html_part = `<div class="main-body__box__message__comment">
       <img class="main-body__box__message__comment__image" src="${message.image}" alt="${message.alt}">
       </div>`;
     }
-    if (typeof(message.text) != "undefined") {
+    if (message.text != undefined) {
       text_html_part = `<p class="main-body__box__message__comment__content">
                       ${ message.text }
                     </p>`;
