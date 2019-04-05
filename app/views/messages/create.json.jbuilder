@@ -10,5 +10,7 @@ end
 json.user_id @message.user_id
 json.group_id @message.group_id
 json.user_name @message.user.name
-json.time @message.created_at
+json.time @message.created_at.strftime("%Y/%m/%d %H:%M")
+# 自動更新に伴いidもデータとして渡す
+json.id @message.id
 
