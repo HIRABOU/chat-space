@@ -52,7 +52,6 @@ $(function() {
     })
     //ajax通信成功時
     .done(function(data) {
-      console.log(data)
       var html = buildHTML(data);
       $('.main-body').append(html);
       $('#new_message').get(0).reset();
@@ -72,14 +71,12 @@ $(function() {
   //メッセージの自動更新
     function update (){
      var last_message_id = $('.main-body__box__message').last().attr('data-message-id');
-     // console.log(last_message_id);
       $.ajax({
         type: 'GET',
         data: {last_id: last_message_id},
         dataType: 'json',
       })
      .done(function(data){
-      console.log(data)
         if (data.length != null){
           $.each(data, function(i, data){
             var html = buildHTML(data);
