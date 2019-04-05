@@ -1,24 +1,22 @@
 $(function() {
-  //メッセージ表示のHTMLを生成
+
   function buildHTML(message) {
-    //通常時は何もないからのHTMLを生成
     var image_html_part = ``;
     var text_html_part = ``;
-    //画像が投稿された場合のHTML
     if (message.image) {
       image_html_part = `<div class="main-body__box__message__comment">
       <img class="main-body__box__message__comment__image" src="${message.image}" alt="${message.alt}">
       </div>`;
     }
-    //メッセージが投稿された場合のHTML
+
     if (message.text) {
       text_html_part = `<p class="main-body__box__message__comment__content">
                       ${ message.text }
                     </p>`;
     }
-    //メッセージ表示のHTML
+
     var html = `<div class="main-body__box">
-                  <div class="main-body__box__message">
+                  <div class="main-body__box__message" data-message-id= ${message.id}>
                     <div class="main-body__box__message__user-name">
                       ${ message.user_name }
                     </div>
@@ -33,6 +31,10 @@ $(function() {
                   </div>
                 </div>`
     return html;
+  }
+
+  function ScrollToNewMessage(){
+    // $('.main__body').animate({scrollTop: $('.main__body')[0].scrollHeight}, 'fast');
   }
 
   //メッセージ送信の非同期通信
@@ -50,6 +52,7 @@ $(function() {
     })
     //ajax通信成功時
     .done(function(data) {
+      console.log(data)
       var html = buildHTML(data);
       $('.main-body').append(html);
       $('#new_message').get(0).reset();
@@ -64,4 +67,32 @@ $(function() {
   });
   //コメント投稿時自動で最新コメント部分（一番下）へ移動
   $('.main-body').scrollTop($('.main-body')[0].scrollHeight);
+
+
+  //メッセージの自動更新
+    function update (){
+     var last_message_id = $('.main-body__box__message').last().attr('data-message-id');
+     // console.log(last_message_id);
+      $.ajax({
+        type: 'GET',
+        data: {last_id: last_message_id},
+        dataType: 'json',
+      })
+     .done(function(data){
+      console.log(data)
+        if (data.length != null){
+          $.each(data, function(i, data){
+            var html = buildHTML(data);
+            $('.main-body').append(html);
+            $('.main-body').animate({scrollTop: $('.main-body')[0].scrollHeight}, 1000);
+          })
+        }
+     })
+    .fail(function(data){
+      alert('自動更新に失敗しました');
+    })
+  }
+    if (window.location.href.match(/\/groups\/\d+\/messages/)){
+  setInterval(update, 5000)
+};
 });
