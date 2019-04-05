@@ -1,6 +1,8 @@
+# messages#createが動いた時にmessageカラムに値がある場合
 if @message.message.present?
   json.text @message.message
 end
+# messages#createが動いた時にimageカラムに値がある場合
 if @message.image.present?
   json.image @message.image.url
   json.alt  @message.image.filename
