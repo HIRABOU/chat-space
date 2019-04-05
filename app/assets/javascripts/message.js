@@ -1,7 +1,7 @@
 $(function() {
   //メッセージ表示のHTMLを生成
   function buildHTML(message) {
-    //通常時は何もからのHTMLを生成
+    //通常時は何もないからのHTMLを生成
     var image_html_part = ``;
     var text_html_part = ``;
     //画像が投稿された場合のHTML
@@ -16,6 +16,7 @@ $(function() {
                       ${ message.text }
                     </p>`;
     }
+    //メッセージ表示のHTML
     var html = `<div class="main-body__box">
                   <div class="main-body__box__message">
                     <div class="main-body__box__message__user-name">
@@ -53,6 +54,7 @@ $(function() {
       $('.main-body').append(html);
       $('#new_message').get(0).reset();
       $('.send-btn').prop('disabled', false);
+      //アニメーションでぬるっと入る
       $('.main-body').animate({scrollTop: $('.main-body')[0].scrollHeight}, 1000);
     })
     //ajax通信失敗時
