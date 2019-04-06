@@ -33,10 +33,6 @@ $(function() {
     return html;
   }
 
-  function ScrollToNewMessage(){
-    // $('.main__body').animate({scrollTop: $('.main__body')[0].scrollHeight}, 'fast');
-  }
-
   //メッセージ送信の非同期通信
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
