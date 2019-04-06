@@ -1,16 +1,16 @@
 $(function() {
 
   function buildHTML(message) {
-    var image_html_part = ``;
-    var text_html_part = ``;
+    var imageHtmlPart = ``;
+    var textHtmlPart = ``;
     if (message.image) {
-      image_html_part = `<div class="main-body__box__message__comment">
+      imageHtmlPart = `<div class="main-body__box__message__comment">
       <img class="main-body__box__message__comment__image" src="${message.image}" alt="${message.alt}">
       </div>`;
     }
 
     if (message.text) {
-      text_html_part = `<p class="main-body__box__message__comment__content">
+      textHtmlPart = `<p class="main-body__box__message__comment__content">
                       ${ message.text }
                     </p>`;
     }
@@ -22,8 +22,8 @@ $(function() {
                     </div>
                   <div class="main-body__box__message__comment">
                     ` +
-                  text_html_part +
-                  image_html_part +
+                  textHtmlPart +
+                  imageHtmlPart +
                   `</div>
                 </div>
                   <div class="main-body__box__date">
@@ -66,10 +66,10 @@ $(function() {
 
   //メッセージの自動更新
     function update (){
-     var last_message_id = $('.main-body__box__message').last().attr('data-message-id');
+     var lastMessageId = $('.main-body__box__message').last().data('message-id');
       $.ajax({
         type: 'GET',
-        data: {last_id: last_message_id},
+        data: {last_id: lastMessageId},
         dataType: 'json',
       })
      .done(function(data){
