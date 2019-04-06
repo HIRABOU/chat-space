@@ -21,7 +21,8 @@ $(function() {
                       ${ message.user_name }
                     </div>
                   <div class="main-body__box__message__comment">
-                    ${ textHtmlPart }${ imageHtmlPart }
+                    ${ textHtmlPart }
+                    ${ imageHtmlPart }
                   </div>
                 </div>
                   <div class="main-body__box__date">
