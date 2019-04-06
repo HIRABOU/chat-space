@@ -1,7 +1,8 @@
+//インクリメンタルサーチ
 $(document).on('turbolinks:load', function() {
 
 var search_list = $(".user-search-result");
-
+  //該当ユーザー表示のHTMLの表示
   function appendUser(user) {
    var html = `<div class="chat-group-user clearfix" id='chat-group-user-${user.id}'>
                 <p class="chat-group-user__name">${ user.name }</p>
@@ -9,12 +10,13 @@ var search_list = $(".user-search-result");
               </div>`
   search_list.append(html);
   }
-
+  //検索後文字を消去した時にsearch_listを空にする
   function appendNoUser(user) {
     var html = ``
     search_list.append(html);
   }
 
+  //appendUserで追加後にメンバーリストに入れる
   function buildHTML(id, name) {
     var html = `<div class="chat-group-user clearfix" id=chat-group-user-${id}>
                   <input type="hidden" name="group[user_ids][]" value="${id}">
@@ -24,6 +26,7 @@ var search_list = $(".user-search-result");
     return html
   }
 
+  //文字入力するたびにイベントを発火させる
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
 
