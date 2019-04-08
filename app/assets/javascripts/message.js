@@ -1,6 +1,8 @@
 $(function() {
 
+  // 添付するHTMLの作成
   function buildHTML(message) {
+    // 最初は画像とテキストが空として定義している
     var imageHtmlPart = ``;
     var textHtmlPart = ``;
     if (message.image) {
@@ -65,14 +67,21 @@ $(function() {
 
   //メッセージの自動更新
     function update (){
+      // 最後のメッセージのidををdataメソッドで取得して変数に代入
      var lastMessageId = $('.main-body__box__message').last().data('message-id');
+     // ajaxの設定
       $.ajax({
         type: 'GET',
         data: {last_id: lastMessageId},
         dataType: 'json',
       })
+
+      // json形式での通信成功時の記述
      .done(function(data){
+        //
         if (data.length != null){
+          // jbuilderで翻訳された情報が配列の要素にハッシュとして入ってくる
+          // each文で配列を要素毎に分ける
           $.each(data, function(i, data){
             var html = buildHTML(data);
             $('.main-body').append(html);
