@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(function() {
 
   // 添付するHTMLの作成
   function buildHTML(message) {
