@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
 
   // 添付するHTMLの作成
   function buildHTML(message) {
@@ -93,7 +93,9 @@ $(function() {
       alert('自動更新に失敗しました');
     })
   }
-    if (window.location.href.match(/\/groups\/\d+\/messages/)){
-  setInterval(update, 5000)
-};
+
+  var intervalId = setInterval(update, 5000)
+  $(document).on('#new_message', function() {
+  clearInterval(intervalId);
+  });
 });
