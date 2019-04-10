@@ -53,8 +53,7 @@ $(document).on('turbolinks:load', function() {
 
     //ajax通信成功時
     //create.json.jbuilderから返ってきたjson形式のデータを受け取る
-    .done(function(data) {
-      console.log(data)
+    .done(function(data) { //create.json.jbuilderのデータを引数にする
       var html = buildHTML(data); //jsonを元にHTMLデータを作成
       $('.main-body').append(html); //貼り付け
       $('#new_message').get(0).reset(); //formの値をimageごとリセット
@@ -63,7 +62,7 @@ $(document).on('turbolinks:load', function() {
       //アニメーションでぬるっと入る
       $('.main-body').animate({scrollTop: $('.main-body')[0].scrollHeight}, 1000);
     })
-    //ajax通信失敗時
+    //ajax通信失敗時(サーバーエラーの時)
     .fail(function() {
       alert('error');//errorと書いたアラートを表示
     })
