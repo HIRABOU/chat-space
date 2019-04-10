@@ -12,8 +12,8 @@ var search_list = $(".user-search-result");
   }
   //検索後文字を消去した時にsearch_listを空にする
   function appendNoUser(user) {
-    var html = ``
-    search_list.append(html);
+    var html = `<div class="chat-group-user clearfix" id='chat-group-user'>${user}</div>`
+  search_list.append(html);
   }
 
   //appendUserで追加後にメンバーリストに入れる
@@ -56,6 +56,7 @@ var search_list = $(".user-search-result");
     var id = $(this).data('user-id');
     var name = $(this).data('user-name');
     var insertHTML = buildHTML(id, name);
+    $("#user-search-field").val("");
     $('#chat-group-users').append(insertHTML);
     $(this).parent('.chat-group-user').remove();
   });
