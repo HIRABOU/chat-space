@@ -36,29 +36,36 @@ $(document).on('turbolinks:load', function() {
 
   //メッセージ送信の非同期通信
   $('#new_message').on('submit', function(e) {
-    e.preventDefault();
+    e.preventDefault(); //動作を一時的に止める
+     //form要素内のformDataオブジェクトを作成
     var formData = new FormData(this)
+    //#new_messageのaction属性の値を取得して代入
     var url = $(this).attr('action')
     $.ajax({
-      url: url,
-      type: "POST",
-      data: formData,
-      dataType: 'json',
-      processData: false,
-      contentType: false
+      url: url,//リクエスト送信先の指定
+      type: "POST",//HTTP送信の種類
+      data: formData,//サーバにformdataを送信する
+      dataType: 'json', //サーバから返されるデータをjson形式に指定
+      processData: false,//クエリ文字列に変換しないようにする
+      contentType: false //サーバにデータのファイル形式を伝える
+      //上記２つはformDataを使用していれば適切な値になっているためfalseにする
     })
+
     //ajax通信成功時
+    //create.json.jbuilderから返ってきたjson形式のデータを受け取る
     .done(function(data) {
-      var html = buildHTML(data);
-      $('.main-body').append(html);
-      $('#new_message').get(0).reset();
+      console.log(data)
+      var html = buildHTML(data); //jsonを元にHTMLデータを作成
+      $('.main-body').append(html); //貼り付け
+      $('#new_message').get(0).reset(); //formの値をimageごとリセット
+      //buttonタグのdisabled属性を無効化して連続入力を可能にする
       $('.send-btn').prop('disabled', false);
       //アニメーションでぬるっと入る
       $('.main-body').animate({scrollTop: $('.main-body')[0].scrollHeight}, 1000);
     })
     //ajax通信失敗時
     .fail(function() {
-      alert('error');
+      alert('error');//errorと書いたアラートを表示
     })
   });
   //コメント投稿時自動で最新コメント部分（一番下）へ移動
@@ -74,11 +81,10 @@ $(document).on('turbolinks:load', function() {
         type: 'GET',
         data: {last_id: lastMessageId},
         dataType: 'json',
-      })
+      }) //messages_controllerへ
 
       // json形式での通信成功時の記述
      .done(function(data){
-        //
         if (data.length != null){
           // jbuilderで翻訳された情報が配列の要素にハッシュとして入ってくる
           // each文で配列を要素毎に分ける
