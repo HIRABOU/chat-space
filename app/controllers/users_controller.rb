@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
 
   def index
+    # 現在のユーザーを除いて入力されたキーワードを含むnameカラムの値を検索する
     @users = User.where('name LIKE(?)', "%#{params[:keyword]}%").where.not(id: current_user.id)
     respond_to do |format|
-      format.html
-      format.json
+      format.html #index.html.hamlへ
+      format.json #index.json.jbuilderへ
     end
   end
 

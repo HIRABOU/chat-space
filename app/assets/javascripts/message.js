@@ -34,13 +34,10 @@ $(document).on('turbolinks:load', function() {
     return html;
   }
 
-  //メッセージ送信の非同期通信
-  $('#new_message').on('submit', function(e) {
+  $('#new_message').on('submit', function(e) {//メッセージ送信の非同期通信
     e.preventDefault(); //動作を一時的に止める
-     //form要素内のformDataオブジェクトを作成
-    var formData = new FormData(this)
-    //#new_messageのaction属性の値を取得して代入
-    var url = $(this).attr('action')
+    var formData = new FormData(this)//form要素内のformDataオブジェクトを作成
+    var url = $(this).attr('action')//#new_messageのaction属性の値を取得して代入
     $.ajax({
       url: url,//リクエスト送信先の指定
       type: "POST",//HTTP送信の種類
@@ -49,7 +46,7 @@ $(document).on('turbolinks:load', function() {
       processData: false,//クエリ文字列に変換しないようにする
       contentType: false //サーバにデータのファイル形式を伝える
       //上記２つはformDataを使用していれば適切な値になっているためfalseにする
-    })
+    })//messages_controllerへ
 
     //ajax通信成功時
     //create.json.jbuilderから返ってきたjson形式のデータを受け取る
@@ -62,25 +59,23 @@ $(document).on('turbolinks:load', function() {
       //アニメーションでぬるっと入る
       $('.main-body').animate({scrollTop: $('.main-body')[0].scrollHeight}, 1000);
     })
-    //ajax通信失敗時(サーバーエラーの時)
-    .fail(function() {
+
+    .fail(function() {//ajax通信失敗時(サーバーエラーの時)
       alert('error');//errorと書いたアラートを表示
     })
   });
-  //コメント投稿時自動で最新コメント部分（一番下）へ移動
-  $('.main-body').scrollTop($('.main-body')[0].scrollHeight);
+  $('.main-body').scrollTop($('.main-body')[0].scrollHeight);//コメント投稿時自動で最新コメント部分（一番下）へ移動
 
 
   //メッセージの自動更新
     function update (){
-      // 最後のメッセージのidををdataメソッドで取得して変数に代入
-     var lastMessageId = $('.main-body__box__message').last().data('message-id');
+     var lastMessageId = $('.main-body__box__message').last().data('message-id');// 最後のメッセージのidををdataメソッドで取得して変数に代入
      // ajaxの設定
       $.ajax({
         type: 'GET',
         data: {last_id: lastMessageId},
         dataType: 'json',
-      }) //messages_controllerへ
+      })
 
       // json形式での通信成功時の記述
      .done(function(data){
