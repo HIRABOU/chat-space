@@ -1,3 +1,6 @@
+# json形式に変換してmessage.jsの.doneへ返す
+# json.KEY VALUEで記述する
+
 # messages#createが動いた時にmessageカラムに値がある場合
 if @message.message.present?
   json.text @message.message
