@@ -94,9 +94,9 @@ $(document).on('turbolinks:load', function() {
     })
   }
 
-  var intervalId = setInterval(update, 5000)
+  var intervalId = setInterval(update, 5000)//5000ミリ秒ごとにupdateを繰り返す
   $(document).on('#new_message', function() {
-  clearInterval(intervalId);
+  clearInterval(intervalId);//追加され続けないように処理を止める
   });
 
 });
