@@ -5,13 +5,13 @@ $(document).on('turbolinks:load', function() {
     // 最初は画像とテキストが空として定義している
     var imageHtmlPart = ``;
     var textHtmlPart = ``;
-    if (message.image) {
+    if (message.image) {//画像がある場合に上書き
       imageHtmlPart = `<div class="main-body__box__message__comment">
       <img class="main-body__box__message__comment__image" src="${message.image}" alt="${message.alt}">
       </div>`;
     }
 
-    if (message.text) {
+    if (message.text) {//文字がある場合に上書き
       textHtmlPart = `<p class="main-body__box__message__comment__content">
                       ${ message.text }
                     </p>`;
@@ -34,7 +34,8 @@ $(document).on('turbolinks:load', function() {
     return html;
   }
 
-  $('#new_message').on('submit', function(e) {//メッセージ送信の非同期通信
+  //メッセージ送信の非同期通信
+  $('#new_message').on('submit', function(e) {//formのsendボタンを押したら発火するように指定
     e.preventDefault(); //動作を一時的に止める
     var formData = new FormData(this)//form要素内のformDataオブジェクトを作成
     var url = $(this).attr('action')//#new_messageのaction属性の値を取得して代入
@@ -69,20 +70,19 @@ $(document).on('turbolinks:load', function() {
 
   //メッセージの自動更新
     function update (){
-     var lastMessageId = $('.main-body__box__message').last().data('message-id');// 最後のメッセージのidををdataメソッドで取得して変数に代入
-     // ajaxの設定
+     var lastMessageId = $('.main-body__box__message').last().data('message-id');//最後のメッセージのidををdataメソッドで取得して変数に代入
       $.ajax({
-        type: 'GET',
-        data: {last_id: lastMessageId},
-        dataType: 'json',
-      })
+        type: 'GET',//HTTP送信の種類を指定
+        data: {last_id: lastMessageId},//key valueのセットでハッシュにする
+        dataType: 'json',//返ってくるデータをjson形式に指定
+      })//urlの指定がない場合は現在のページのURL(location.href)が初期値
+      //今回はmessagesController#indexになる
 
       // json形式での通信成功時の記述
-     .done(function(data){
-        if (data.length != null){
-          // jbuilderで翻訳された情報が配列の要素にハッシュとして入ってくる
+     .done(function(data){//jbuilderからjson形式で値を受け取る
+        if (data.length != null){//新しい情報が追加されている場合
           // each文で配列を要素毎に分ける
-          $.each(data, function(i, data){
+          data.forEach(function(data){
             var html = buildHTML(data);
             $('.main-body').append(html);
             $('.main-body').animate({scrollTop: $('.main-body')[0].scrollHeight}, 1000);

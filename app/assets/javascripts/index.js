@@ -28,7 +28,7 @@ var search_list = $(".user-search-result");
   $("#user-search-field").on("keyup", function() {//文字入力するたびにイベントを発火させる
     var input = $("#user-search-field").val();//フォームに入力した値を取得して代入
     $.ajax({
-      type: 'GET',//HTTP送信の種類
+      type: 'GET',//HTTP送信の種類を指定
       url: "/users",//usersController#indexを動かすように指定
       data: { keyword: input },//key valueのセットでハッシュにする
       //発火時にparams[:keyword]で値を取得する
