@@ -90,7 +90,7 @@ $(document).on('turbolinks:load', function() {
         }
      })
     .fail(function(data){
-      alert('自動更新に失敗しました');
+      console.log('自動更新に失敗しました');
     })
   }
 
@@ -98,4 +98,5 @@ $(document).on('turbolinks:load', function() {
   $(document).on('#new_message', function() {
   clearInterval(intervalId);
   });
+
 });
